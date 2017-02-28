@@ -1,0 +1,23 @@
+pcm.!default {
+   type plug
+   slave.pcm {
+      type dmix
+      ipc_key 2048
+      slave {
+         pcm "hw:Loopback,0,0"
+	 rate 48000
+	 format S16_LE
+	 channels 2
+	 period_size 1024
+	 buffer_size 8192
+	}
+   }
+}
+pcm.hubcap {
+	type plug
+	slave {
+		pcm "hw:Loopback,1,0"
+		rate 48000
+		format S16_LE
+	}
+}
